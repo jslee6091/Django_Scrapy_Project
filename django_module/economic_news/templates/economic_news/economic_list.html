@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Django economic news List{% endblock %}
+
+{% block content %}
+<div id="content">
+	<h1>economic news List</h1>
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{ form.as_table }}
+		<input type="submit" value="최신 데이터 가져오기">
+	</form>
+	<p><a href="{% url 'economic_news:ecosearch' %}">Search</a></p>
+    <br/><br/>
+	{% for economicnews in object_list %}
+		<h2>{{ economicnews.title }}</h2>
+		<li>{{ economicnews.preview }}</li>
+		<li>{{ economicnews.writer }}</li>
+	{% endfor %}
+	
+
+	<div>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

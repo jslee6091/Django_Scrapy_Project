@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Django world news List{% endblock %}
+
+{% block content %}
+<div id="content">
+	<h1>world news List</h1>
+	<ul>
+		{% for worldnews in object_list %}
+			<h2>{{ worldnews.title }}</h2>
+			<li>{{ worldnews.preview }}</li>
+			<li>{{ worldnews.writer }}</li>
+		{% endfor %}
+	</ul>
+	<br/>
+	
+	<div>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+        {% endif %}
+
+        Page {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+        
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

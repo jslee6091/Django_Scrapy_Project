@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}home.html{% endblock %}
+
+{% load static %}
+{% block extrastyle %}{% static 'css/base.css' %}{% endblock %}
+
+{% block content %}
+    <div id="content">
+        <div id="homeimg">
+            {% comment %} <img src="{% static 'img/django-actor-big.jpg' %}" style="height: 400px;"/> {% endcomment %}
+            <h1 style="margin: 0;">This is my Django Module Project web site.</h1>
+            <ul>
+                <li>Author : Jae Sung Lee</li>
+                <li>Major : Electronics and Communications Engineering</li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div id="footer">
+        &copy; This is FOOTER area.
+    </div>
+{% endblock %}
