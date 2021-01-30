@@ -11,5 +11,7 @@ class WorldNews(models.Model):
         verbose_name_plural = 'world_news'
         db_table = 'world_news'
 
+        ordering = ('-id',)
+
     def __str__(self):
         return self.title

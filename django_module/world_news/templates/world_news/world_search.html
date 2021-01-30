@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Django it news List{% endblock %}
+{% block title %}Django world news List{% endblock %}
 
 {% block content %}
 <div id="content">
-	<h1>it news List</h1>
+	<h1>world news List</h1>
 	<form action="" method="POST">
 		{% csrf_token %}
 		{{ form.as_table }}
@@ -12,10 +12,10 @@
     <br/><br/>
 
 	{% if search_list %}
-		{% for news in search_list %}
-			<h3>{{news.title}}</h3>
-			{{news.preview}}
-			<p>{{news.writer}}</p>
+		{% for worldnews in search_list %}
+			<h3>{{worldnews.title}}</h3>
+			{{worldnews.preview}}
+			<p>{{worldnews.writer}}</p>
 		{% endfor %}
 	{% elif search_keyword %}
 		[{{ search_keyword }}]의 검색 결과가 없습니다.

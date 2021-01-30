@@ -15,7 +15,7 @@
 		{% for news in search_list %}
 			<h3>{{news.title}}</h3>
 			{{news.preview}}
-			<p>{{post.writer}}</p>
+			<p>{{news.writer}}</p>
 		{% endfor %}
 	{% elif search_keyword %}
 		[{{ search_keyword }}]의 검색 결과가 없습니다.

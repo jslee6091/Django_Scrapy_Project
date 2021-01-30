@@ -1,9 +1,9 @@
-from economic_news.form import DataForm, DataSearchForm
+from economic_news.form import RefreshForm, SearchForm
 from django.shortcuts import render
 from django.views.generic import ListView, FormView
 from economic_news.models import EconomicNews
 from django.db.models import Q
-import os
+import os, sqlite3
 
 
 # Create your views here.
@@ -14,22 +14,29 @@ class EconomicNewsView(ListView):
     paginate_by = 10
 
 
-class DataFormView(FormView):
-    template_name = 'economic_news/economic_list.html'
-    form_class = DataForm
-    success_url = 'economicnews/'
-    context_object_name = 'eco'
-
+class RefreshFormView(FormView):
+    template_name = 'economic_news/economic_refresh.html'
+    form_class = RefreshForm
+    
     def form_valid(self, form):
-        print('this request', self.request)
         
-        os.chdir('/Users/jslee/Desktop/my_module_project/django_module')
-        os.system('scrapy crawl newsbot2')
+        if self.request.method == 'POST':
+            os.chdir('/Users/jslee/Desktop/my_module_project/django_module')
+            con = sqlite3.connect(os.path.abspath('/Users/jslee/Desktop/my_module_project/django_module/db.sqlite3'))
+            cur = con.cursor()
+            cur.execute('DROP TABLE IF EXISTS economic_news')
+            cur.execute('CREATE TABLE IF NOT EXISTS economic_news (id INTEGER PRIMARY KEY NOT NULL, title TEXT, writer TEXT, preview TEXT)')
+            con.commit()
+            os.system('scrapy crawl newsbot2')
         
-        return super().form_valid(form)
+        news_list = EconomicNews.objects.all()
+        upload= {}
+        upload['refreshed_list'] = news_list
+        
+        return render(self.request, self.template_name, upload)
 
-class DataSearchFormView(FormView):
-    form_class = DataSearchForm # form.py에 생성
+class SearchFormView(FormView):
+    form_class = SearchForm
     template_name = "economic_news/economic_search.html"
     
     # 검색 할때의 페이지와 검색 결과가 나오는 페이지를 같게 한다.

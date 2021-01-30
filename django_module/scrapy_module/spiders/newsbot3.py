@@ -4,7 +4,7 @@ from scrapy.http import Request
 
 
 # 세계 뉴스
-URL = 'https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=104&date=20210128&page=%s'
+URL = 'https://news.naver.com/main/list.nhn?mode=LS2D&mid=shm&sid1=104&sid2=322&page=%s'
 start_page = 1
 
 

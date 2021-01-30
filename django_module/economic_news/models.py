@@ -11,5 +11,7 @@ class EconomicNews(models.Model):
         verbose_name_plural = 'economic_news'
         db_table = 'economic_news'
 
+        ordering = ('-id',)
+
     def __str__(self):
         return self.title

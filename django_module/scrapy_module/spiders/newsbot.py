@@ -3,7 +3,7 @@ from scrapy_module.items import ScrapyModuleItem
 from scrapy.http import Request 
 
 # it 뉴스
-URL = 'https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105&date=20210127&page=%s'
+URL = 'https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=105&page=%s'
 start_page = 1
 
 def remove_space(descs:list) -> list:

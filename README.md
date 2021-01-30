@@ -7,3 +7,6 @@
   4. https://infinitt.tistory.com/140
   5. https://towardsdatascience.com/a-minimalist-end-to-end-scrapy-tutorial-part-iii-bcd94a2e8bf3
   6. https://yonghyunlee.gitlab.io/python/django-master-10/
+  7. https://docs.djangoproject.com/en/3.1/ref/request-response/
+  8. https://docs.djangoproject.com/en/3.1/ref/class-based-views/generic-editing/#django.views.generic.edit.UpdateView
+

@@ -4,6 +4,9 @@
 {% block content %}
 <div id="content">
 	<h1>world news List</h1>
+	<h2><a href="{% url 'world_news:worldrefresh' %}">Refresh 바로가기</a></h2>
+	<h2><a href="{% url 'world_news:worldsearch' %}">Search 바로가기</a></h2>
+	<br/><br/>
 	<ul>
 		{% for worldnews in object_list %}
 			<h2>{{ worldnews.title }}</h2>
@@ -24,5 +27,6 @@
             <a href="?page={{ page_obj.next_page_number }}">Next</a>
         {% endif %}
     </div>
+	<br/><br/>
 </div>
 {% endblock %} 

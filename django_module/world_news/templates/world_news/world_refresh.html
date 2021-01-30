@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Django world news refresh{% endblock %}
+
+{% block content %}
+<div id="content">
+	<h1>world news refresh</h1>
+	<form action="" method="POST">
+		{% csrf_token %}
+		{{ form.as_table }}
+		<input type="submit" value="Refresh">
+	</form>
+    <br/><br/>
+
+    {% for refreshed_news in refreshed_list %}
+        <h3>{{refreshed_news.title}}</h3>
+        {{refreshed_news.preview}}
+        <p>{{refreshed_news.writer}}</p>
+	{% endfor %}
+
+    <br/>
+</div>
+{% endblock %} 

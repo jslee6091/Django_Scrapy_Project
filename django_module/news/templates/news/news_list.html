@@ -4,12 +4,9 @@
 {% block content %}
 <div id="content">
 	<h1>it news List</h1>
-	<form action="" method="POST">
-		{% csrf_token %}
-		{{ form.as_table }}
-		<input type="submit" value="최신 데이터 가져오기">
-	</form>
-	<p><a href="{% url 'news:itsearch' %}">Search</a></p>
+	<h2><a href="{% url 'news:itrefresh' %}">Refresh 바로가기</a></h2>
+	<h2><a href="{% url 'news:itsearch' %}">Search 바로가기</a></h2>
+	<br/><br/>
 	<ul>
 		{% for itnews in object_list %}
 			<h2>{{ itnews.title }}</h2>
@@ -30,5 +27,6 @@
             <a href="?page={{ page_obj.next_page_number }}">Next</a>
         {% endif %}
     </div>
+	<br/><br/>
 </div>
 {% endblock %} 
